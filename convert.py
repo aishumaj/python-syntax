@@ -1,7 +1,10 @@
+from tempfile import tempdir
+
+
 def convert_temp(unit_in, unit_out, temp):
     """Convert fahrenheit <-> celsius and return results.
 
-    - unit_in: either "f" or "c" 
+    - unit_in: either "f" or "c"
     - unit-out: either "f" or "c"
     - temp: temperature (in f or c, depending on unit_in)
 
@@ -16,6 +19,23 @@ def convert_temp(unit_in, unit_out, temp):
     """
 
     # YOUR CODE HERE
+
+    if unit_in == "f":
+      if unit_out == "c":
+        return (temp-32)*(5/9)
+      elif unit_out == "f":
+        return temp
+      else:
+        return f"Invalid unit {unit_out}"
+    elif unit_in == "c":
+      if unit_out == "f":
+        return temp*(9/5)+32
+      elif unit_out == "c":
+        return temp
+      else:
+        return f"Invalid unit {unit_out}"
+    else:
+      return f"Invalid unit {unit_in}"
 
 
 print("c", "f", 0, convert_temp("c", "f", 0), "should be 32.0")
